@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import Item from '../components/Item';
 
 const Home = () => {
 
@@ -18,15 +19,26 @@ const Home = () => {
     fetchItems();
   }, []);
 
-  const handleIncrement = (itemId) => {
-    setItems(prevItems => 
-        prevItems.map(item => 
-            item._id === itemId? {...item, quantity: item.quantity + 1} : item
-        )
-    )
-  }
 
-  const handleDecrement = (itemId) => {
+
+  const handleIncrement = async (itemId) => {
+    try {
+      await axios.post('http://localhost:5000/api/inc',{itemId});
+      setItems(prevItems =>
+        prevItems.map(item =>
+          item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } catch (error) {
+      console.error('Error updating item quantity:', error);
+    }
+  };
+
+
+
+  const handleDecrement = async (itemId) => {
+    await axios.post('http://localhost:5000/api/dec',{itemId});
+
     setItems(prevItems =>
       prevItems.map(item =>
         item._id === itemId ? { ...item, quantity: Math.max(0, item.quantity - 1) } : item
@@ -35,14 +47,15 @@ const Home = () => {
   };
 
   return (
-    <div className='p-12 text-2xl'>
-        {items.map(item => (
-            <div key={item._id}>
-                <span>{item.name} : {item.quantity}</span>
-                <button onClick={() => handleIncrement(item._id)}>+</button>
-                <button onClick={() => handleDecrement(item._id)}>-</button>
-            </div>
-        ))}
+    <div className=' text-2xl'>
+           {items.map(item => (
+        <Item
+          key={item._id}
+          item={item}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
+        />
+      ))}
     </div>
   )
 }
