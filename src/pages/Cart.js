@@ -7,7 +7,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/cart');
+        const response = await axios.get('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/cart');
         setCartItems(response.data);
       } catch (error) {
         console.error('Error fetching cart items:', error);

@@ -9,7 +9,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/items'); // Assuming your backend endpoint is /api/items
+        const response = await axios.get('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/items'); // Assuming your backend endpoint is /api/items
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching items:', error);
@@ -23,7 +23,7 @@ const Menu = () => {
 
   const handleIncrement = async (itemId) => {
     try {
-      await axios.post('http://localhost:5000/api/inc',{itemId});
+      await axios.post('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/inc',{itemId});
       setItems(prevItems =>
         prevItems.map(item =>
           item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
@@ -37,7 +37,7 @@ const Menu = () => {
 
 
   const handleDecrement = async (itemId) => {
-    await axios.post('http://localhost:5000/api/dec',{itemId});
+    await axios.post('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/dec',{itemId});
 
     setItems(prevItems =>
       prevItems.map(item =>
