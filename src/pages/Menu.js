@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios';
-import Item from '../components/Item';
+import Slider from '../components/Slider';
+import Footer from "../components/Footer";
 
 const Menu = () => {
 
@@ -9,7 +10,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/items'); // Assuming your backend endpoint is /api/items
+        const response = await axios.get('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/items'); 
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching items:', error);
@@ -20,42 +21,14 @@ const Menu = () => {
   }, []);
 
 
-
-  const handleIncrement = async (itemId) => {
-    try {
-      await axios.post('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/inc',{itemId});
-      setItems(prevItems =>
-        prevItems.map(item =>
-          item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
-        )
-      );
-    } catch (error) {
-      console.error('Error updating item quantity:', error);
-    }
-  };
-
-
-
-  const handleDecrement = async (itemId) => {
-    await axios.post('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/dec',{itemId});
-
-    setItems(prevItems =>
-      prevItems.map(item =>
-        item._id === itemId ? { ...item, quantity: Math.max(0, item.quantity - 1) } : item
-      )
-    );
-  };
-
   return (
-    <div className=' text-2xl'>
-           {items.map(item => (
-        <Item
-          key={item._id}
-          item={item}
-          onIncrement={handleIncrement}
-          onDecrement={handleDecrement}
-        />
-      ))}
+    <div className=' mt-28 mb-4'>
+      <Slider row="1" heading="Burgers" foodCategory="burger" foodData={items} setItems={setItems}/>    
+      <Slider row="2" heading="Pizzas" foodCategory="pizza" foodData={items} setItems={setItems}/>    
+      <Slider row="3" heading="Drinks" foodCategory="drink" foodData={items} setItems={setItems}/> 
+      <div className='mt-8'>
+        <Footer/>
+      </div>
     </div>
   )
 }
