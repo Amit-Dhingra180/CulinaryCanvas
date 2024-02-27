@@ -5,8 +5,8 @@ import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-
-
+import Reserve from "./pages/Reserve";
+import Confirm from "./pages/Confirm";
 
 
 function App() {
@@ -22,6 +22,9 @@ function App() {
           <Route path='/cart' exact Component={Cart}/>
           <Route path='/checkout' exact Component={Checkout}/>
           <Route path='/about' exact Component={About}/>
+          <Route path='/reserve' exact Component={Reserve}/>
+          <Route path='/confirm' exact Component={Confirm}/>
+
         </Routes>
         
       </BrowserRouter>

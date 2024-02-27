@@ -21,8 +21,9 @@ const Navbar = () => {
         <div className='text-white space-x-8 mr-6 text-lg hidden md:flex items-center lg:text-xl lg:mr-16 lg:space-x-16'>
           <Link to='/menu' className='hover:text-yellow-500'>Menu</Link>
           <Link to='/about' className='hover:text-yellow-500'>About</Link>
-          <Link to='/contact' className='hover:text-yellow-500'>Contact</Link>
           <Link to='/cart' className='hover:text-yellow-500'>Cart {}</Link>
+          <Link to='/reserve' className='hidden hover:text-yellow-500'>Reserve</Link>
+
         </div>
 
         <div className='text-white mr-4 cursor-pointer md:hidden' onClick={handleNav}>
@@ -35,8 +36,8 @@ const Navbar = () => {
           </div>
           <Link to='/menu'>Menu</Link>
           <Link to='/about'>About</Link>
-          <Link to='/contact'>Contact</Link>
           <Link to='/cart'>Cart</Link>
+          <Link to='/reserve' className='hidden'>Reserve</Link>
         </div>
 
       </div>

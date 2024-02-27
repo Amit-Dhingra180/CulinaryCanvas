@@ -29,12 +29,16 @@ const Item = ({ item, setItems}) => {
   };
   return (
     <div key={item._id} className='w-64 mr-6 lg:w-96'>
-      <img src='./burgers/cheese.jpg' className='rounded-lg mb-2' alt='burger'/>
+      <img src={item.image} className='w-full h-40 object-cover rounded-lg lg:h-64 hover:scale-105 hover:ease-in-out duration-500' alt='burger'/>
+      <div className='mt-2'>
       <span className='font-semibold text-xl lg:text-3xl'>{item.name} - {item.quantity}</span>
-      <div className='mt-1'>
-      <span className='mr-4 lg:text-lg'>Rs.{item.price}</span>
-      <button onClick={() => handleIncrement(item._id)} className='text-white bg-black w-6 h-6 font-bold lg:w-8 lg:h-8 mr-1 rounded-lg'>+</button>
+      </div>
+      <div className='mt-2 flex justify-between items-center'>
+      <span className='mr-4 lg:text-lg font-semibold text-red-600'>Rs.{item.price}</span>
+      <div className='mr-4'>
       <button onClick={() => handleDecrement(item._id)} className='text-white bg-black w-6 h-6 font-bold lg:w-8 lg:h-8 rounded-lg'>-</button>
+      <button onClick={() => handleIncrement(item._id)} className='text-white bg-black w-6 h-6 font-bold lg:w-8 lg:h-8  rounded-lg ml-4'>+</button>
+      </div>
       </div>
     </div>
   );
