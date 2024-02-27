@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div>
-      <div className="bg-cover min-h-screen p-1" style={{ backgroundImage: 'url(/home_bg.jpg)' }}>
+      <div className="bg-cover bg-bottom min-h-screen p-1" style={{ backgroundImage: 'url(/main.jpg)' }}>
         
         <div className='w-4/5 h-2/5 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/4 flex flex-col justify-around md:w-96 md:left-1/3 lg:left-1/4 xl:left-0 xl:translate-x-0 xl:ml-24 lg:top-1/2'>
 
