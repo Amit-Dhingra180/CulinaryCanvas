@@ -10,7 +10,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await axios.get('http://testing-env.eba-qjnfvjf6.ap-south-1.elasticbeanstalk.com/api/items'); 
+        const response = await axios.get('https://www.amitdhingra.co.in/api/items'); 
         setItems(response.data);
       } catch (error) {
         console.error('Error fetching items:', error);
@@ -19,7 +19,6 @@ const Menu = () => {
 
     fetchItems();
   }, []);
-
 
   return (
     <div className=' mt-28 mb-4'>
